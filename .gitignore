@@ -1,0 +1,8 @@
+.build/
+dist/
+.DS_Store
+.swiftpm/
+.idea/
+.vscode/
+*.swp
+*.swo
