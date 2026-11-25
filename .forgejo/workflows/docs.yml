@@ -1,0 +1,23 @@
+name: Documentation checks
+
+on:
+  pull_request:
+    paths:
+      - '*.md'
+      - LICENSE
+      - NOTICE
+      - '.forgejo/workflows/docs.yml'
+
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - run: |
+          git diff --check HEAD^ HEAD
+          test -s LICENSE
+          test -s NOTICE
+          test -s CLA.md
+          test -s CONTRIBUTING.md
